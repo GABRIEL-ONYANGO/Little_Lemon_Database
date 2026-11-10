@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<workbook original-version="18.1" source-build="2026.11" version="18.1" xmlns:user="http://www.tableausoftware.com/xml/user">
+ <preferences/>
+ <datasources>
+  <datasource caption="Little Lemon Orders" inline="true" name="federated.1" version="18.1">
+   <connection class="textscan" directory=".." filename="little_lemon_orders_clean.csv" interpretationMode="legacy">
+    <relation name="little_lemon_orders_clean" table="little_lemon_orders_clean.csv" type="table"/>
+   </connection>
+   <column caption="Sales" datatype="real" name="[Sales]" role="measure" type="quantitative"/>
+   <column caption="Cost" datatype="real" name="[Cost]" role="measure" type="quantitative"/>
+   <column caption="Quantity" datatype="integer" name="[Quantity]" role="measure" type="quantitative"/>
+   <column caption="Gross Profit" datatype="real" name="[Gross Profit]" role="measure" type="quantitative"/>
+   <column caption="Order Date" datatype="date" name="[Order Date]" role="dimension" type="ordinal"/>
+   <column caption="Country" datatype="string" name="[Country]" role="dimension" type="nominal"/>
+   <column caption="Cuisine Name" datatype="string" name="[Cuisine Name]" role="dimension" type="nominal"/>
+   <column caption="Course Name" datatype="string" name="[Course Name]" role="dimension" type="nominal"/>
+   <column caption="Order ID" datatype="string" name="[Order ID]" role="dimension" type="nominal"/>
+  </datasource>
+ </datasources>
+ <worksheets>
+  <worksheet name="Monthly Sales Trend"><table><view><datasources><datasource name="federated.1"/></datasources><aggregation value="true"/></view><panes><pane><mark class="Line"/></pane></panes><rows>[Sales]</rows><cols>[Order Date]</cols></table></worksheet>
+  <worksheet name="Sales by Cuisine"><table><view><datasources><datasource name="federated.1"/></datasources><aggregation value="true"/></view><panes><pane><mark class="Bar"/></pane></panes><rows>[Cuisine Name]</rows><cols>[Sales]</cols></table></worksheet>
+  <worksheet name="Top Countries"><table><view><datasources><datasource name="federated.1"/></datasources><aggregation value="true"/></view><panes><pane><mark class="Bar"/></pane></panes><rows>[Country]</rows><cols>[Sales]</cols></table></worksheet>
+  <worksheet name="Quantity by Course"><table><view><datasources><datasource name="federated.1"/></datasources><aggregation value="true"/></view><panes><pane><mark class="Bar"/></pane></panes><rows>[Course Name]</rows><cols>[Quantity]</cols></table></worksheet>
+ </worksheets>
+ <dashboards>
+  <dashboard name="Little Lemon Sales Dashboard">
+   <zones>
+    <zone h="900" id="1" type="layout-basic" w="1200" x="0" y="0">
+     <zone h="450" id="2" name="Monthly Sales Trend" type="worksheet" w="1200" x="0" y="0"/>
+     <zone h="450" id="3" name="Sales by Cuisine" type="worksheet" w="600" x="0" y="450"/>
+     <zone h="450" id="4" name="Top Countries" type="worksheet" w="600" x="600" y="450"/>
+    </zone>
+   </zones>
+  </dashboard>
+ </dashboards>
+</workbook>
