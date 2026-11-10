@@ -1,4 +1,4 @@
-# Little Lemon Project — README
+# Little Lemon Project 
 
 ## Project overview
 This repository implements an integrated Little Lemon booking database and sales analytics solution based on the supplied project brief and `LittleLemon_Data.xlsx`.
